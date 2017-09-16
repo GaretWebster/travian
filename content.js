@@ -7,49 +7,53 @@ console.log('Report Time = ' + time);
 var type = findType(document.getElementById("subject").innerHTML)
 console.log('Report Type = ' + type);
 
-unit_race_map = { "Clubswinger": "Teutons", "Legionnaire": "Romans", "Phalanx": "Gauls" };
-attacker_race = unit_race_map[$("#message").find("#attacker").find("img.unit").first().attr("alt")];
-deffender_race = unit_race_map[$("#message").find("table:not(#attacker)").find("img.unit").first().attr("alt")];
+var unit_race_map = { "Clubswinger": "Teutons", "Legionnaire": "Romans", "Phalanx": "Gauls" };
+
+var attacker_race = unit_race_map[$("#message").find("#attacker").find("img.unit").first().attr("alt")];
+console.log(attacker_race);
+
+var defender_race = unit_race_map[$("#message").find("table:not(#attacker)").find("img.unit").first().attr("alt")];
+console.log(defender_race);
 
 /*
-var attackingVillage = ;
-var attackingPlayer = ;
-var attackingAlliance = ;
-var defendingVillage = ;
-var defendingPlayer = ;
-var defendingAlliance = ;
+var attacker_village = ;
+var attacker_player = ;
+var attacker_alliance = ;
+var defending_village = ;
+var defending_player = ;
+var defending_alliance = ;
 var troops (not sure best way to store this)
 */			
 
-function findType(typeDiv){
+function findType(type_div){
 	//default case if no type is found
 	var type = 'Unknown';
 	
-	if(typeDiv.includes('scouts')){
+	if(type_div.includes('scouts')){
 		type = 'Scout';
 	}
-	else if(typeDiv.includes('attacks')){
+	else if(type_div.includes('attacks')){
 		type = 'Attack';
 	}
-	else if(typeDiv.includes('raids')){
+	else if(type_div.includes('raids')){
 		type = 'Raid';
 	}
-	else if(typeDiv.includes('reinforces')){
+	else if(type_div.includes('reinforces')){
 		type = 'Reinforce';
 	}
-	else if(typeDiv.includes('explores')){
+	else if(type_div.includes('explores')){
 		type = 'Explores';
 	}
-	else if(typeDiv.includes('supplies')){
+	else if(type_div.includes('supplies')){
 		//do something to ignore this case, we don't want these reports
 		type='Supply';
 	}
-	else if(typeDiv.includes('Animals caught')){
+	else if(type_div.includes('Animals caught')){
 		//do something to ignore this case, we don't want these reports
 		type='AnimalCapture';
 	}
-	//settle
-	//failed to settle
+	//settle case
+	//failed to settle case
 	
 	return type;
 }
