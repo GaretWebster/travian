@@ -1,3 +1,7 @@
+unit_race_map = { "Clubswinger": "Teutons", "Legionnaire": "Romans", "Phalanx": "Gauls" };
+attacker_race = unit_race_map[$("#message").find("#attacker").find("img.unit").first().attr("alt")];
+deffender_race = unit_race_map[$("#message").find("table:not(#attacker)").find("img.unit").first().attr("alt")];
+
 document.getElementById("test").addEventListener('click', () => {
     console.log("Popup DOM fully loaded and parsed");
 
