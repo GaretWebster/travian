@@ -88,13 +88,8 @@ if(goods.getElementsByTagName("th")[0].innerHTML == 'Bounty'){
 	console.log('Bounty Max = ' + bounty_max);
 }
 
-chrome.storage.sync.set({name:'Bob'}, function() {
-  console.log('Name saved');
-});
-
-// Later on...
-chrome.storage.sync.get('name', function(r) {
-  console.log('Name retrieved: ' + r['name']);
+$.get("https://sheets.googleapis.com/v4/spreadsheets/1NVko06OxHn7I0O74ln8SnGGpUAUSLr8RSIRMbHbTVMs/values/Sheet1", function(data){
+  console.log("Data: " + data);
 });
 
 function findType(type_div){
