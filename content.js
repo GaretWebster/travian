@@ -66,9 +66,40 @@ console.log('Defender Name Link = ' +  defender_name_link);
 console.log('Defender Village = ' + defender_village);
 console.log('Defender Village Link = ' + defender_village_link);
 
+var goods = document.getElementsByClassName("goods")[0];
+if(goods.getElementsByTagName("th")[0].innerHTML == 'Bounty'){
+	
+	var bounty_wood = goods.getElementsByClassName("rArea")[0].innerHTML.split(">").pop();
+	console.log('Bounty Woood = ' + bounty_wood);
+	var bounty_clay = goods.getElementsByClassName("rArea")[1].innerHTML.split(">").pop();
+	console.log('Bounty Clay = ' + bounty_clay);
+	var bounty_iron = goods.getElementsByClassName("rArea")[2].innerHTML.split(">").pop();
+	console.log('Bounty Iron = ' + bounty_iron);
+	var bounty_wheat = goods.getElementsByClassName("rArea")[3].innerHTML.split(">").pop();
+	console.log('Bounty Wheat = ' + bounty_wheat);
+	
+	var carry = goods.getElementsByClassName("carry")[0].innerHTML;
+	carry = carry.split(">").pop();
+	carry = carry.split("/");
+	
+	var bounty_total = carry[0];
+	console.log('Bounty Total = ' + bounty_total);
+	var bounty_max = carry[1];
+	console.log('Bounty Max = ' + bounty_max);
+}
+
+chrome.storage.sync.set({name:'Bob'}, function() {
+  console.log('Name saved');
+});
+
+// Later on...
+chrome.storage.sync.get('name', function(r) {
+  console.log('Name retrieved: ' + r['name']);
+});
+
 function findType(type_div){
 	//default case if no type is found
-	var type = 'Unknown';
+	var type;
 	
 	if(type_div.includes('scouts')){
 		type = 'Scout';
